@@ -4,8 +4,8 @@
 
 </br>
 
-## Getting-started
-```javascript
+## # Getting-started
+```
 npm install
 node server.js
 ```
