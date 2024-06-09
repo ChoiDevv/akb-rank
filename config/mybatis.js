@@ -3,7 +3,7 @@ const mybatisMapper = require('mybatis-mapper');
 const path = require('path').resolve();
 
 require('dotenv').config();
-console.log('Connect DB on ', process.env.DB_HOST, process.env.DB_PORT);
+console.log('Connect DB on', process.env.DB_HOST, process.env.DB_PORT);
 
 try {
     const admin = path + '/xml/admin.xml';

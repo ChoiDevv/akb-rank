@@ -1,10 +1,14 @@
 const express = require('express');
 const app = express();
+const path = require('path');
 const port = 3000;
 
 app.get('/test', (req, res) => {
     res.send('akb-rank test');
 });
+
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
 const admin = require('./router/admin');
 const record = require('./router/record');
