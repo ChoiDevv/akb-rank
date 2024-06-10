@@ -16,7 +16,7 @@ router.get('/points-rank', async (req, res) => {
         res.status(200).render('user/user_points_rank', { data: data });
     } catch (e) {
         logger.error(e);
-        res.status(500).render('error');
+        res.status(500).redirect('error');
     }
 });
 

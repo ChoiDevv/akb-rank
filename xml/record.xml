@@ -1,5 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="record">
-    
+    <select id="getFirstRank">
+        SELECT
+            u.name,
+            p.map,
+            SEC_TO_TIME(p.time) AS time
+        FROM
+            playertimes p
+        LEFT JOIN users u ON p.auth = u.auth
+        JOIN (
+            SELECT
+                p.map,
+                MIN(p.time) AS min_time
+            FROM
+                playertimes p
+            WHERE
+                style = 0
+            GROUP BY
+                p.map) min_times ON p.map = min_times.map AND p.time = min_times.min_time
+        WHERE 1 = 1
+            AND p.style = 0
+            AND p.map LIKE CONCAT (#{style}, '%')
+        ORDER BY
+            p.map ASC
+        <if test="limit and limit != ''">
+            LIMIT ${limit}
+        </if>
+        <if test="offset and offset != ''">
+            OFFSET ${offset}
+        </if>
+    </select>
 </mapper>
