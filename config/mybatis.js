@@ -27,7 +27,6 @@ exports.query = async (namespace, id, param) => {
         const query = mybatisMapper.getStatement(namespace, id, param, mapperConfig);
         console.log(query);
         connection((conn) => {
-            console.log(namespace, id, param);
             conn.query(query, (err, result) => {
                 if (err) reject(err);
                 resolve(result);

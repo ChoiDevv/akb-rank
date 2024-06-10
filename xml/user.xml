@@ -10,5 +10,11 @@
             users u
         ORDER BY
             u.points DESC
+        <if test="limit and limit != ''">
+            LIMIT ${limit}
+        </if>
+        <if test="offset and offset != ''">
+            OFFSET ${offset}
+        </if>
     </select>
 </mapper>

@@ -1,0 +1,10 @@
+<%- include('../default/header', { title: 'AKB Ranking' }) %>
+    <h1>User Points Rank</h1>
+    <ul>
+        <% data.forEach(function(obj) { %>
+            <li>
+                <%= obj.ranking %>위: name: <%=obj.name %>, points: <%=obj.points %>
+            </li>
+        <% }) %>
+    </ul>
+<%- include('../default/footer') %>
