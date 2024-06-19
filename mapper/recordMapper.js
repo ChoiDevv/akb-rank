@@ -11,3 +11,14 @@ exports.getFirstRank = async (style = '', limit = '', offset = '') => {
         throw e;
     }
 }
+
+exports.getMapList = async (style, limit, offset) => {
+    try {
+        const params = { style, limit, offset };
+        const data = await query('record', 'getMapList', params);
+        return data;
+    } catch (e) {
+        logger.error(e);
+        throw e;
+    }
+}

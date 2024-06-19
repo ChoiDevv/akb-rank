@@ -31,4 +31,19 @@
             OFFSET ${offset}
         </if>
     </select>
+
+    <select id="getMapList">
+        SELECT
+            map
+        FROM
+            maptiers m
+        WHERE
+            map LIKE CONCAT (#{style}, '%')
+        <if test="limit and limit != ''">
+            LIMIT ${limit}
+        </if>
+        <if test="offset and offset != ''">
+            OFFSET ${offset}
+        </if>
+    </select>
 </mapper>
