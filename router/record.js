@@ -32,7 +32,7 @@ router.get('/map', async (req, res) => {
             recordService.getMapBySearch(search)
         ]);
 
-        res.status(200).render('record/record_map_search', { map_list: map_list, map: map });
+        res.status(200).render('record/record_map_search', { map_list: map_list, map: map, search: search });
     } catch (e) {
         logger.error(e);
         res.status(500).redirect('error');
