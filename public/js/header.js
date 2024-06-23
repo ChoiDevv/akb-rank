@@ -1,6 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Header JavaScript is loaded!');
 
+    if (window.location.pathname === '/' && !window.location.search) {
+        localStorage.removeItem('selectedStyle');
+    }
+
     const radioButtons = document.querySelectorAll('.radio-container input[type="radio"]');
 
     const selectedStyle = localStorage.getItem('selectedStyle');
