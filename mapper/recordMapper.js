@@ -22,3 +22,14 @@ exports.getMapList = async (style, limit, offset) => {
         throw e;
     }
 }
+
+exports.getMapBySearch = async (search) => {
+    try {
+        const params = { search };
+        const data = await query('record', 'getMapBySearch', params);
+        return data;
+    } catch (e) {
+        logger.error(e);
+        throw e;
+    }
+}

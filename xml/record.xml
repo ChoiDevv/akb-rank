@@ -46,4 +46,25 @@
             OFFSET ${offset}
         </if>
     </select>
+
+    <select id="getMapBySearch">
+    SELECT 
+        ROW_NUMBER() OVER (ORDER BY p.time) AS ranking, 
+        u.name,
+        p.strafes,
+        p.sync,
+        p.jumps,
+        p.time
+    FROM 
+        playertimes p 
+    LEFT JOIN 
+        users u 
+    ON 
+        p.auth = u.auth 
+    WHERE 
+        p.map = #{search}
+        AND p.style = 0 
+    ORDER BY 
+        p.time;
+    </select>
 </mapper>

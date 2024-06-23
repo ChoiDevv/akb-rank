@@ -22,4 +22,16 @@ router.get('/first-rank', async (req, res) => {
     }
 });
 
+router.get('/map', async (req, res) => {
+    try {
+        let search = req.query.search;
+
+        const data = await recordService.getMapBySearch(search);
+        res.status(200).render('record/record_map_search', { data: data });
+    } catch (e) {
+        logger.error(e);
+        res.status(500).redirect('error');
+    }
+})
+
 module.exports = router;

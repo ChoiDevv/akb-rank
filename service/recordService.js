@@ -23,3 +23,13 @@ exports.getMapList = async (style) => {
         throw e;
     }
 }
+
+exports.getMapBySearch = async (search) => {
+    try {
+        const data = await recordMapper.getMapBySearch(search);
+        return data;
+    } catch (e) {
+        logger.error(e);
+        throw e;
+    }
+}

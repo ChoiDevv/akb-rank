@@ -15,9 +15,13 @@ document.querySelectorAll('#map-select .option').forEach(function(item) {
     item.addEventListener('click', function() {
         const select = document.getElementById('select');
         const hiddenSelect = document.getElementById('hidden-select');
+        const selectedValue = this.getAttribute('data-value');
+
         select.textContent = this.textContent;
-        hiddenSelect.value = this.getAttribute('data-value');
+        hiddenSelect.value = selectedValue;
         document.getElementById('map-select').style.display = 'none';
+
+        window.location.href = `/record/map?search=${encodeURIComponent(selectedValue)}`;
     });
 });
 
