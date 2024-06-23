@@ -24,9 +24,9 @@ exports.getMapList = async (style) => {
     }
 }
 
-exports.getMapBySearch = async (search) => {
+exports.getMapBySearch = async (search, limit, offset) => {
     try {
-        const data = await recordMapper.getMapBySearch(search);
+        const data = await recordMapper.getMapBySearch(search, limit, offset);
         return data;
     } catch (e) {
         logger.error(e);

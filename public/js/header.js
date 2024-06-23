@@ -50,12 +50,16 @@ document.querySelectorAll('#map-select .option').forEach(function(item) {
         const select = document.getElementById('select');
         const hiddenSelect = document.getElementById('hidden-select');
         const selectedValue = this.getAttribute('data-value');
+        const limit = 10;
+        const offset = 0;
 
         select.textContent = this.textContent;
         hiddenSelect.value = selectedValue;
         document.getElementById('map-select').style.display = 'none';
 
-        window.location.href = `/record/map?search=${encodeURIComponent(selectedValue)}`;
+        const style = localStorage.getItem('selectedStyle');
+
+        window.location.href = `/record/map?search=${encodeURIComponent(selectedValue)}&limit=${limit}&offset=${offset}&style=${style}`;
     });
 });
 

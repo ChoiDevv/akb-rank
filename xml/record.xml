@@ -65,6 +65,12 @@
         p.map = #{search}
         AND p.style = 0 
     ORDER BY 
-        p.time;
+        p.time
+    <if test="limit and limit != ''">
+        LIMIT ${limit}
+    </if>
+    <if test="offset and offset != ''">
+        OFFSET ${offset}
+    </if>
     </select>
 </mapper>

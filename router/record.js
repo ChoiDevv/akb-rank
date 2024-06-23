@@ -25,11 +25,13 @@ router.get('/first-rank', async (req, res) => {
 router.get('/map', async (req, res) => {
     try {
         let search = req.query.search;
-        let style = req.query.style || 'bhop';
+        let limit = req.query.limit || 10;
+        let offset = req.query.offset || 0;
+        let style = req.query.style;
 
         const [map_list, map] = await Promise.all([
             recordService.getMapList(style),
-            recordService.getMapBySearch(search)
+            recordService.getMapBySearch(search, limit, offset)
         ]);
 
         res.status(200).render('record/record_map_search', { map_list: map_list, map: map, search: search });
