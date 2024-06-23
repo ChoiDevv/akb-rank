@@ -1,5 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Header JavaScript is loaded!');
+
+    const radioButtons = document.querySelectorAll('.radio-container input[type="radio"]');
+
+    const selectedStyle = localStorage.getItem('selectedStyle');
+    if (selectedStyle) {
+        const selectedRadio = document.querySelector(`.radio-container input[type="radio"][value="${selectedStyle}"]`);
+        if (selectedRadio) {
+            selectedRadio.checked = true;
+        }
+    }
+
+    radioButtons.forEach(radio => {
+        radio.addEventListener('click', function() {
+            const value = this.value;
+            localStorage.setItem('selectedStyle', value);
+
+            const url = `/?style=${value}`;
+            window.location.href = url;
+        });
+    });
 });
 
 document.getElementById('select').addEventListener('click', function() {
