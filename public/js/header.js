@@ -1,18 +1,27 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Header JavaScript is loaded!');
 
-    if (window.location.pathname === '/' && !window.location.search) {
-        localStorage.removeItem('selectedStyle');
-    }
-
     const radioButtons = document.querySelectorAll('.radio-container input[type="radio"]');
 
-    const selectedStyle = localStorage.getItem('selectedStyle');
-    if (selectedStyle) {
-        const selectedRadio = document.querySelector(`.radio-container input[type="radio"][value="${selectedStyle}"]`);
-        if (selectedRadio) {
-            selectedRadio.checked = true;
-        }
+    const urlParams = new URLSearchParams(window.location.search);
+    const styleParam = urlParams.get('style');
+
+    let selectedStyle = localStorage.getItem('selectedStyle');
+
+    if (styleParam) {
+        selectedStyle = styleParam;
+        localStorage.setItem('selectedStyle', selectedStyle);
+    } else if (window.location.pathname === '/' && !window.location.search) {
+        selectedStyle = 'bhop';
+        localStorage.setItem('selectedStyle', selectedStyle);
+    } else if (!selectedStyle) {
+        selectedStyle = 'bhop';
+        localStorage.setItem('selectedStyle', selectedStyle);
+    }
+
+    const selectedRadio = document.querySelector(`.radio-container input[type="radio"][value="${selectedStyle}"]`);
+    if (selectedRadio) {
+        selectedRadio.checked = true;
     }
 
     radioButtons.forEach(radio => {
