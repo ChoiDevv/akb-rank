@@ -12,9 +12,9 @@ exports.getFirstRank = async (style, limit, offset) => {
     }
 }
 
-exports.getMapList = async (style, limit, offset) => {
+exports.getMapList = async (style) => {
     try {
-        const data = await recordMapper.getMapList(style, limit, offset);
+        const data = await recordMapper.getMapList(style);
         if (data.length < 1) throw e;
 
         return data;
