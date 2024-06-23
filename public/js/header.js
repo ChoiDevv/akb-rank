@@ -16,8 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const value = this.value;
             localStorage.setItem('selectedStyle', value);
 
-            const url = `/?style=${value}`;
-            window.location.href = url;
+            const currentUrl = new URL(window.location.href);
+            currentUrl.searchParams.set('style', value);
+            window.location.href = currentUrl.toString();
         });
     });
 });
