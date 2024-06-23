@@ -1,7 +1,9 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const port = 3000;
+require('dotenv').config();
+const port = process.env.SERVER_PORT;
+
 
 app.get('/test', (req, res) => {
     res.send('akb-rank test');
@@ -9,6 +11,7 @@ app.get('/test', (req, res) => {
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 const admin = require('./router/admin');
 const record = require('./router/record');
