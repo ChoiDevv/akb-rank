@@ -11,12 +11,12 @@
         <div class="map-container">
             <div id="select">SELECT MAP</div>
             <div class="map-select-list" id="map-select">
-                <% data.forEach(function(obj) { %>
+                <% map_list.forEach(function(obj) { %>
                     <div class="option" data-value="<%= obj.map %>"><%= obj.map %></div>
                 <% }) %>
             </div>
             <select id="hidden-select" style="display: none;">
-                <% data.forEach(function(obj) { %>
+                <% map_list.forEach(function(obj) { %>
                     <option value="<%= obj.map %>"><%= obj.map %></option>
                 <% }) %>
             </select>

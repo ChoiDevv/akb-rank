@@ -1,7 +1,7 @@
 <%- include('../default/header', { title: 'AKB Ranking' }) %>
-    <h1>맵 별 1등 기록</h1>
+    <h1>맵 별 기록</h1>
     <ul>
-        <% data.forEach(function(obj) { %>
+        <% map.forEach(function(obj) { %>
             <li>
                 <%= obj.ranking %> || <%= obj.name %> || <%= obj.strafes %> || <%= obj.sync %> || <%= obj.jumps %> || <%= obj.time %>
             </li>

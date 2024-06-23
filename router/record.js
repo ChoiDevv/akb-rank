@@ -25,13 +25,18 @@ router.get('/first-rank', async (req, res) => {
 router.get('/map', async (req, res) => {
     try {
         let search = req.query.search;
+        let style = req.query.style || 'bhop';
 
-        const data = await recordService.getMapBySearch(search);
-        res.status(200).render('record/record_map_search', { data: data });
+        const [map_list, map] = await Promise.all([
+            recordService.getMapList(style),
+            recordService.getMapBySearch(search)
+        ]);
+
+        res.status(200).render('record/record_map_search', { map_list: map_list, map: map });
     } catch (e) {
         logger.error(e);
         res.status(500).redirect('error');
     }
-})
+});
 
 module.exports = router;
