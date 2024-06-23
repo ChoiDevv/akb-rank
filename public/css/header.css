@@ -1,6 +1,63 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 header {
     background-color: #4CAF50;
     color: white;
     text-align: center;
     padding: 1em 0;
+}
+
+.map-container {
+    position: relative;
+    display: inline-block;
+    width: 200px;
+}
+
+#hidden-select {
+    display: none; 
+}
+
+#select {
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+    background-color: white;
+    text-align: center;
+    color: black;
+}
+
+#select:focus {
+    outline: none;
+}
+
+.map-select-list {
+    width: 100%;
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    border: 1px solid #ccc;
+    background: white;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1;
+    box-sizing: border-box;
+}
+
+.map-select-list .option {
+    padding: 10px;
+    background: white;
+    color: black;
+    border: none;
+    cursor: pointer;
+}
+
+.map-select-list .option:hover {
+    background: #ddd;
 }
