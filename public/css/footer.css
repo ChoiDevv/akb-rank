@@ -1,7 +1,9 @@
 footer {
-    background-color: #4CAF50;
-    color: white;
-    text-align: center;
-    padding: 1em 0;
-    margin-bottom: 10px;
+    background-color: green; /* 헤더와 푸터 배경색 */
+    height: 60px; /* 헤더와 푸터의 높이를 동일하게 설정 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
 }
